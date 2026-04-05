@@ -9,7 +9,18 @@
     align-items: center;
     justify-items: left;
 }
-
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: left;
+}
+.row input {
+    flex: 1;
+}
+.row label {
+    margin-right: 10px;
+}
 .login button {
     background-color: #0c88fc;
     color: white;
