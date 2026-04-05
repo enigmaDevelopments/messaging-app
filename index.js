@@ -1,7 +1,8 @@
 import { supabase }   from "./supabase-client.js";
-console.log("Hello world!");
-supabase
-  .from('test')
-  .insert({ test:  Math.floor(Math.random() * 10)}) );
 
-console.log("Inserted a random number into the test table!");
+async function insert(table, data) {
+	const {error} = await supabase.from(table).insert(data);
+	if (error) 
+		console.error('Error inserting data:', error);
+}
+await insert('users', { username: "gracehopper" ,password: "password123", email: "grace@example.com" });
