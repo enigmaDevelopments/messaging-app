@@ -17,9 +17,13 @@
 }
 .row input {
     flex: 1;
+    border: none #0c88fc;
+    border-bottom: 2px solid #0c88fc;
 }
 .row label {
+    flex-basis: 100px;
     margin-right: 10px;
+    white-space:  nowrap;
 }
 .login button {
     background-color: #0c88fc;
