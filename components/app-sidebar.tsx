@@ -35,6 +35,11 @@ export function AppSidebar() {
               <Link href="/protected/chat"><MessageSquare /> <span>Chat</span></Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
+          <SidebarMenuItem>
+            <SidebarMenuButton asChild>
+              <Link href="/protected/chat-fake-users"><MessageSquare /> <span>Chat-fake-users</span></Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
         </SidebarMenu>
       </SidebarContent>
       <SidebarFooter className="p-4 border-t">
