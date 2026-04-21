@@ -29,16 +29,16 @@ export default function AddMemberForm({ groupId }: AddMemberFormProps){
   };
   
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-2 p-4 border rounded-lg bg-card">
-      <h3 className="font-bold text-lg mb-2">Add New member</h3>
-      <div className="flex gap-2">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-2 rounded-lg border bg-card p-3">
+      <h3 className="mb-1 text-base font-semibold">Add Member</h3>
+      <div className="flex flex-col gap-2 sm:flex-row">
         <Input
           placeholder="Enter User ID"
           value={userId}
           onChange={(e) => setUserId(e.target.value)}
           required
         />
-        <Button type="submit" disabled={loading}>
+        <Button type="submit" disabled={loading} className="sm:self-start">
           {loading ? "Adding..." : "Add"}
         </Button>
         </div>

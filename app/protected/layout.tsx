@@ -19,7 +19,7 @@ export default function ProtectedLayout({
           <header className="flex h-16 shrink-0 items-center justify-between border-b px-8 bg-background">
             <ThemeSwitcher />
           </header>
-          
+
           {/* background */}
           <div className="flex-1 p-8 bg-slate-50/50 dark:bg-zinc-950 overflow-y-auto">
             {children}

@@ -45,13 +45,13 @@ export async function GroupMemberList({
   }
 
   return (
-    <div className="space-y-3">
-      <h3 className="text-lg font-semibold">Members</h3>
+    <div className="space-y-2">
+      <h3 className="text-base font-semibold">Members</h3>
 
       {(members as unknown as Member[]).map((member) => (
         <div
           key={member.id}
-          className="flex items-center justify-between rounded-lg border p-2"
+          className="flex items-center justify-between rounded-md border p-2"
         >
           <div className="min-w-0 flex-1">
             <UserModalTrigger
