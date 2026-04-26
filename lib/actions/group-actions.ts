@@ -7,13 +7,23 @@ type MembershipRow = {
   group_id: string;
 };
 
-// add user to group by ID
-export async function addGroupMember(groupId: string, userId: string, role: string = "member") {
+// add user to group by username
+export async function addGroupMember(groupId: string, username: string, role: string = "member") {
   const supabase = await createClient();
+
+  const { data: profile, error: profileError } = await supabase
+    .from("profiles")
+    .select("id")
+    .eq("username", username)
+    .maybeSingle();
+
+  if (profileError || !profile) {
+    return { error: "User not found." };
+  }
 
   const { error } = await supabase
     .from("memberships")
-    .insert({ group_id: groupId, user_id: userId, role })
+    .insert({ group_id: groupId, user_id: profile.id, role })
   
     if (error){
       console.error("Error adding member:", error.message);
@@ -24,14 +34,25 @@ export async function addGroupMember(groupId: string, userId: string, role: stri
     return { success: true };
 }
 
-// remove user from a group
-export async function removeGroupMember(membershipId: string){
+// remove user from a group by username
+export async function removeGroupMember(groupId: string, username: string){
   const supabase = await createClient();
+
+  const { data: profile, error: profileError } = await supabase
+    .from("profiles")
+    .select("id")
+    .eq("username", username)
+    .maybeSingle();
+
+  if (profileError || !profile) {
+    return { error: "User not found." };
+  }
 
   const { error } = await supabase
     .from("memberships")
     .delete()
-    .eq("id", membershipId);
+    .eq("group_id", groupId)
+    .eq("user_id", profile.id);
     
   if (error){
     console.error("Error removing member:", error.message);
@@ -131,4 +152,3 @@ export async function findOrCreateDirectConversationByUsername(
   revalidatePath("/protected/chat");
   return { conversationId: newGroup.id };
 }
-
