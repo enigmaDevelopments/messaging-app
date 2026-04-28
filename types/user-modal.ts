@@ -8,5 +8,8 @@ export type UserModalData = {
   status: "online" | "away" | "offline";
   privateNote: string | null;
   areFriends: boolean;
+  blockedByMe: boolean;
+  blockedMe: boolean;
+  isBlocked: boolean;
   isSelf: boolean;
 };
